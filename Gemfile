@@ -10,9 +10,7 @@ group :development do
   gem 'bacon'
   gem 'mocha-on-bacon'
   gem 'prettybacon'
-  gem 'vcr'
   gem 'webmock'
 
-  gem 'codeclimate-test-reporter', :require => nil
   gem 'rubocop'
 end

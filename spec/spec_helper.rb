@@ -1,12 +1,3 @@
-# Set up coverage analysis
-#-----------------------------------------------------------------------------#
-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.configure do |config|
-  config.logger.level = Logger::WARN
-end
-CodeClimate::TestReporter.start
-
 # Set up
 #-----------------------------------------------------------------------------#
 
@@ -21,19 +12,14 @@ require 'mocha-on-bacon'
 require 'pretty_bacon'
 
 require 'webmock'
-include WebMock::API
 
 require 'claide_plugin'
 
-# VCR
+# Webmock
 #--------------------------------------#
+include WebMock::API
 
-require 'vcr'
-VCR.configure do |c|
-  c.cassette_library_dir = ROOT + 'spec/fixtures/vcr_cassettes'
-  c.hook_into :webmock
-  c.ignore_hosts 'codeclimate.com'
-end
+WebMock.disable_net_connect!
 
 #-----------------------------------------------------------------------------#
 
